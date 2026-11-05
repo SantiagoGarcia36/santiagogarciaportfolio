@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alex Rivera – Computer Science student</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FAFAF9; --ink:#111418; --muted:#5F6670; --line:#E6E8EB; --soft:#F0F2F3;
+  --accent:#0F766E; --accent-soft:#DDF3EF; --on-accent:#FFFFFF;
+  --font:"Geist",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C0E11; --ink:#F2F4F6; --muted:#9AA3AD; --line:#23272D; --soft:#171A1E;
+    --accent:#5EEAD4; --accent-soft:#12302C; --on-accent:#0C0E11;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C0E11; --ink:#F2F4F6; --muted:#9AA3AD; --line:#23272D; --soft:#171A1E;
+  --accent:#5EEAD4; --accent-soft:#12302C; --on-accent:#0C0E11;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration-color:var(--line);text-underline-offset:4px;text-decoration-thickness:1.5px}
+a:hover{text-decoration-color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:58rem;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.02em}
+
+/* nav */
+nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem 0;font-size:.95rem}
+nav .brand{font-weight:600}
+nav .links{display:flex;gap:1.5rem;align-items:center}
+nav .links a{color:var(--muted);text-decoration:none}
+nav .links a:hover{color:var(--ink)}
+.theme{font:inherit;font-size:.9rem;background:none;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.25rem .75rem;cursor:pointer}
+.theme:hover{color:var(--ink)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1fr 16rem;gap:3rem;align-items:center;padding:5rem 0 4.5rem}
+.portrait{margin:0;aspect-ratio:4/5;border-radius:20px;background:var(--soft);border:1px dashed var(--line);display:grid;place-items:center;text-align:center;color:var(--muted);font-size:.9rem;overflow:hidden}
+.portrait img{width:100%;height:100%;object-fit:cover;display:block}
+.avail{display:inline-flex;align-items:center;gap:.6rem;background:var(--accent-soft);color:var(--ink);font-size:.9rem;font-weight:500;padding:.35rem .9rem .35rem .7rem;border-radius:999px;margin-bottom:2rem}
+.dot{width:.55rem;height:.55rem;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 var(--accent);animation:ping 2.4s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent)}70%,100%{box-shadow:0 0 0 .6rem transparent}}
+.hero h1{font-size:clamp(2.4rem,6vw,4.5rem);line-height:1.02;letter-spacing:-.04em;max-width:15ch}
+.hero p{font-size:1.25rem;color:var(--muted);max-width:34rem;margin:1.75rem 0 2.25rem}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{font-weight:500;font-size:1rem;text-decoration:none;padding:.7rem 1.25rem;border-radius:10px;border:1px solid var(--line)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn:hover{border-color:var(--accent)}
+
+/* sections: label left, content right */
+section{display:grid;grid-template-columns:11rem 1fr;gap:1.5rem 2rem;padding:3rem 0;border-top:1px solid var(--line)}
+section>h2{font-size:1rem;font-weight:500;color:var(--muted);letter-spacing:0}
+.prose p{margin:0 0 1rem;max-width:36rem}
+.prose p:last-child{margin-bottom:0}
+
+/* projects */
+.proj{display:block;text-decoration:none;padding:1.25rem 0;border-bottom:1px solid var(--line)}
+.proj:first-child{padding-top:0}
+.proj:last-child{border-bottom:0;padding-bottom:0}
+.proj-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.proj h3{font-size:1.3rem}
+.proj .arrow{color:var(--muted);transition:transform .2s,color .2s}
+.proj:hover .arrow{transform:translate(3px,-3px);color:var(--accent)}
+.proj p{margin:.4rem 0 .75rem;color:var(--muted);max-width:36rem}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap;list-style:none;margin:0;padding:0}
+.tags li{font-size:.85rem;background:var(--soft);padding:.15rem .65rem;border-radius:999px}
+.plain-links{margin-top:.75rem;display:flex;gap:1.25rem;font-size:.95rem}
+
+/* experience */
+.job{display:grid;grid-template-columns:9rem 1fr;gap:.25rem 1.5rem;padding:0 0 1.5rem}
+.job:last-child{padding-bottom:0}
+.job .when{color:var(--muted);font-size:.95rem}
+.job h3{font-size:1.05rem}
+.job p{margin:.2rem 0 0;color:var(--muted);max-width:34rem}
+.video-thumb{display:block;max-width:34rem;text-decoration:none}
+.video-thumb img{display:block;width:100%;height:auto;border-radius:10px}
+.video-thumb span{display:block;margin-top:.5rem;color:var(--muted)}
+.video-thumb:hover span{color:var(--accent)}
+
+/* skills */
+.skills{margin:0;display:grid;gap:1rem}
+.skills div{display:grid;grid-template-columns:7rem 1fr;gap:1.5rem}
+.skills dt{font-weight:500}
+.skills dd{margin:0;color:var(--muted)}
+
+/* contact */
+.contact .big{font-size:clamp(1.5rem,4.5vw,2.5rem);font-weight:600;letter-spacing:-.03em;word-break:break-word;text-decoration-color:var(--accent)}
+.social{display:flex;gap:1.5rem;flex-wrap:wrap;margin:1.25rem 0 0;padding:0;list-style:none;color:var(--muted)}
+footer{padding:2.5rem 0 3.5rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+
+@media (max-width:720px){
+  .hero{grid-template-columns:1fr;gap:2rem;padding:2.5rem 0 3rem}
+  .portrait{order:-1;width:9rem;aspect-ratio:1}
+  section{grid-template-columns:1fr;gap:1rem;padding:2.25rem 0}
+  .job{grid-template-columns:1fr}
+  .skills div{grid-template-columns:1fr;gap:.1rem}
+  nav .links a{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .dot{animation:none}
+  .proj .arrow{transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav aria-label="Main">
+    <span class="brand">Santiago I Garcia</span>
+    <div class="links">
+      <a href="#about">About</a><a href="#resume">Resume</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+      <button class="theme" id="theme" type="button" aria-label="Switch color theme">Theme</button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-text">
+    <!-- EDIT: availability, headline, intro -->
+    <h1>Data, Data, Data</h1>
+    <p>I’m Santiago Garcia, a junior majoring in Business Analytics with a minor in French at the University of Arizona. I use my analytical abilities to construct real solutions to real business problems. I also enjoy playing the financial markets as a way to apply my analytical skills.
+
+    </p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">See my work</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+    </div>
+    <!-- EDIT: your photo. Delete the text and add <img src="your-photo.jpg" alt="Santiago I Garcia"> inside the figure.
+         A portrait about 800 x 1000 px works best. -->
+    <figure class="portrait"><img src="DSCF2509.jpg" alt="Santiago I Garcia"></figure>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <div class="prose">
+        <!-- EDIT: 2–3 short paragraphs -->
+        <p>I grew up with an intense curiosity for engineering and mechanical systems. That couriosity led me to a deep interest in financial markets and analytics, where i realized that finidng the path of highest returns was another chance to tinker and problem solve . At the U of A I saw 
+          Business Analytics as a way to combine my interests in business and problem-solving. 
+        <br><br>
+        As i've grown older, I have began to realize what drives me. Initially, I though I was very outcome driven. I saw myself as someone who was not to vigilant of processes,
+        but I now realize that processes and systems are what interest me most about problem solving. To the point that I would rather "take the scenic route" when solving problems on my own. 
+
+          
+
+
+      </div>
+    </section>
+
+    <section id="resume">
+      <h2>Resume</h2>
+      <div>
+        <p><a href="Santiago Garcia Resume 2026.pdf">Download my resume (PDF)</a></p>
+        <img src="resume.png" alt="Image of my resume" style="display:block;width:100%;height:auto">
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div>
+        <a class="proj" href="https://github.com/SantiagoGarcia36/RsikRadarV1.3">
+          <div class="proj-top"><h3>RiskRadar</h3><span class="arrow" aria-hidden="true">↗</span></div>
+          <p>A personal use web application for tracking policy risk exposure to over 2,000 equities listed on the NYSE & NASDAQ. The app uses 
+            multipe api connections to compile a news feed, that is used along side SEC filings and public political connections to score each equity 
+            on a risk scale. The app is built with python (flask).
+            <b>https://github.com/SantiagoGarcia36/RsikRadarV1.3</b>
+          </p>
+          <ul class="tags"><li>Python</li><li>YahooAPI</li><li>SECAPI</li></ul>
+        </a>
+        <a class="proj" href="https://github.com/SantiagoGarcia36/JCLights-website">
+          <div class="proj-top"><h3>Client Intake Site</h3><span class="arrow" aria-hidden="true">↗</span></div>
+          <p>A simple website I made for my friends construction company to collect leads. The website uses Python Flask and SQLite
+            to store client contact infomation. I used SQLite to create the client data tables. The website then uses an Excel to SQL connection to 
+            store the client information to a shared spreadsheet for the comapanies users.
+            <b>https://github.com/SantiagoGarcia36/JCLights-website</b>
+          <ul class="tags"><li>Python</li><li>Flask</li><li>SQL</li></ul>
+        </a>
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <div>
+        <!-- EDIT: newest first. Include internships, research, leadership, and school. -->
+        <a class="video-thumb" href="https://youtube.com/shorts/H8F2Wy9o03o?feature=share" target="_blank" rel="noopener noreferrer" aria-label="Watch my video on YouTube">
+          <img src="https://i.ytimg.com/vi/H8F2Wy9o03o/hqdefault.jpg" alt="Thumbnail for my YouTube video">
+          <span>Watch my video ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <dl class="skills">
+        <dl class="skills-list">
+    <dt>Languages (Computers)</dt>
+    <dd>Python, Java, SQL</dd>
+
+    <dt>Analytics</dt>
+    <dd>Excel, Tableau, Power BI, Financial Analytics, Equity Fundamental Analysis</dd>
+
+    <dt>Tools</dt>
+    <dd>Pitchbook, SEC Edgar Database, VS Code, DataBento</dd>
+
+    <dt>Languages (Human)</dt>
+    <dd>English, Spanish, French</dd>
+</dl>
+      </dl>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Contact</h2>
+      <div>
+        <p style="margin:0 0 1rem;max-width:34rem;color:var(--muted)">I’m open to internships, research positions, and collaborations. Email is the best way to reach me.</p>
+        <a class="big" href="mailto:santiagogarcia@arizona.edu">santiagogarcia@arizona.edu</a>
+        <ul class="social">
+          <li><a href="https://github.com/SantiagoGarcia36" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/santiago-garcia-az/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="wrap">© 2026 Santiago I Garcia</div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  btn.addEventListener('click',function(){
+    var dark=root.getAttribute('data-theme')==='dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    root.setAttribute('data-theme',dark?'light':'dark');
+  });
+})();
+</script>
+</body>
+</html>
